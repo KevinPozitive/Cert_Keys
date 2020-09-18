@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:insert="shared/header:: header"></div>
+<form class="needValid">
+<div class="container">
+    <div class="form-group row">
+        <label for="country" class="col-sm-2 col-form-label col-form-label-sm">Страна</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control form-control-sm" required id="country" value="by" maxlength="2" minlength="2" >
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nameUC" class="col-sm-2 col-form-label col-form-label-sm">Имя УЦ</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control form-control-sm" required id="nameUC" maxlength="9" minlength="4" placeholder="col-form-label-sm">
+        </div>
+    </div>
+    <div class="form-group row">
+        <style>
+            .form-control-sm::-webkit-inner-spin-button {
+                display: none;
+            }
+        </style>
+        <label for="numb" class="col-sm-2 col-form-label col-form-label-sm">Номер</label>
+        <div class="col-sm-2">
+            <input type="number"  class="form-control form-control-sm" id="numb" len placeholder="col-form-label-sm" required>
+            <script>
+                document.getElementById('numb').oninput = function () {
+                    if (this.value.length > 5) this.value = this.value.substr(0, 5); // в поле можно ввести только 7 символов
+                }
+            </script>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="algEncrypt" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм шифрования</label>
+        <div class="col-sm-2">
+            <select class="form-control form-control-sm" required id="algEncrypt">
+                <option>12313123</option>
+                <option>22323233</option>
+                <option>3231213123</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="role" class="col-sm-2 col-form-label col-form-label-sm">Роль</label>
+        <div class="col-sm-2">
+            <select class="form-control form-control-sm" required id="role">
+                <option>12313123</option>
+                <option>22323233</option>
+                <option>3231213123</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="type" class="col-sm-2 col-form-label col-form-label-sm">Тип</label>
+        <div class="col-sm-2">
+            <select class="form-control form-control-sm" required id="type">
+                <option>12313123</option>
+                <option>22323233</option>
+                <option>3231213123</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Alg" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм ...</label>
+        <div class="col-sm-2">
+            <select class="form-control form-control-sm" required id="Alg">
+                <option>12313123</option>
+                <option>22323233</option>
+                <option>3231213123</option>
+                <option>4</option>
+                <option>5</option>
+
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="startDate" class="col-sm-2 col-form-label col-form-label-sm">Дата начала</label>
+        <div class="col-sm-2">
+            <input type="date" class="form-control form-control-sm" id="startDate" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="endDate" class="col-sm-2 col-form-label col-form-label-sm">Конечная дата</label>
+        <div class="col-sm-2">
+            <input type="date" class="form-control form-control-sm" id="endDate" required>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+    </div>
+</div>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.getElementsByClassName('needValid');
+                // Loop over them and prevent submission
+                const validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</form>
+<div th:insert="shared/footer:: footer"></div>
+</body>
+</html>
