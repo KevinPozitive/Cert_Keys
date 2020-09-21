@@ -8,8 +8,44 @@
 </head>
 <body>
 <div th:insert="shared/header:: header"></div>
-hsm
+<form class="needValid">
+    <div class="container">
+        <!-- Имя пользователя       -->
+        <div class="form-group row">
+            <label for="NameUser" class="col-sm-2 col-form-label col-form-label-sm">Имя пользователя</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control form-control-sm" required id="NameUser" maxlength="20" minlength="3">
+            </div>
+        </div>
+        <!-- Пароль       -->
+        <div class="form-group row">
+            <label for="Password" class="col-sm-2 col-form-label col-form-label-sm">Пароль</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control form-control-sm" required id="Password" maxlength="20" minlength="3">
+            </div>
+        </div>
+        <!-- Имя слота    -->
+        <div class="form-group row">
+            <label for="NameSlot" class="col-sm-2 col-form-label col-form-label-sm">Имя слота</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control form-control-sm" required id="NameSlot" maxlength="20" minlength="3">
+            </div>
+        </div>
+        <!-- путь к библиот. HSM     -->
+        <div class="form-group row">
+            <label for="hSMWay" class="col-sm-2 col-form-label col-form-label-sm">Путь к библиотеке HSM</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control form-control-sm" required id="hSMWay" maxlength="20" minlength="3">
+            </div>
+        </div>
+        <!-- Кнопка сохранить     -->
+        <div class="form-group row mb-5 " >
+            <div class="col" style="text-align: right">
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</form>
 <div th:insert="shared/footer:: footer"></div>
-
 </body>
 </html>

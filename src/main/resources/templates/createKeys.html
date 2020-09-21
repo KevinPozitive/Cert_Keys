@@ -11,34 +11,30 @@
 <div th:insert="shared/header:: header"></div>
 <form class="needValid">
     <div class="container">
+        <!-- Страна       -->
         <div class="form-group row">
             <label for="country" class="col-sm-2 col-form-label col-form-label-sm">Страна</label>
             <div class="col-sm-2">
                 <input type="text" class="form-control form-control-sm" required id="country" value="by" maxlength="2" minlength="2" >
             </div>
         </div>
+        <!-- Имя УЦ       -->
         <div class="form-group row">
             <label for="nameUC" class="col-sm-2 col-form-label col-form-label-sm">Имя УЦ</label>
             <div class="col-sm-2">
                 <input type="text" class="form-control form-control-sm" required id="nameUC" maxlength="9" minlength="4" placeholder="col-form-label-sm">
             </div>
         </div>
+        <!-- Номер      -->
         <div class="form-group row">
-            <style>
-                .form-control-sm::-webkit-inner-spin-button {
-                    display: none;
-                }
-            </style>
+            <style th:insert="static/css/removeInnerSpinButton.css"></style>
             <label for="numb" class="col-sm-2 col-form-label col-form-label-sm">Номер</label>
             <div class="col-sm-2">
-                <input type="number"  class="form-control form-control-sm" id="numb" len placeholder="col-form-label-sm" required>
-                <script>
-                    document.getElementById('numb').oninput = function () {
-                        if (this.value.length > 5) this.value = this.value.substr(0, 5); // в поле можно ввести только 7 символов
-                    }
-                </script>
+                <input type="number"  class="form-control form-control-sm" id="numb" placeholder="col-form-label-sm" required>
+                <script th:insert="static/js/maxInputNumbersCrKeys.js"></script>
             </div>
         </div>
+        <!-- Алгоритм шифрования       -->
         <div class="form-group row">
             <label for="algEncrypt" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм шифрования</label>
             <div class="col-sm-2">
@@ -51,6 +47,7 @@
                 </select>
             </div>
         </div>
+        <!-- Роль      -->
         <div class="form-group row">
             <label for="role" class="col-sm-2 col-form-label col-form-label-sm">Роль</label>
             <div class="col-sm-2">
@@ -63,11 +60,12 @@
                 </select>
             </div>
         </div>
+        <!-- Тип       -->
         <div class="form-group row">
             <label for="type" class="col-sm-2 col-form-label col-form-label-sm">Тип</label>
             <div class="col-sm-2">
                 <select class="form-control form-control-sm" required id="type">
-                    <option>12313123</option>
+                    <option property=""> qwe</option>
                     <option>22323233</option>
                     <option>3231213123</option>
                     <option>4</option>
@@ -75,8 +73,9 @@
                 </select>
             </div>
         </div>
+        <!-- Алгоритм подписи       -->
         <div class="form-group row">
-            <label for="Alg" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм ...</label>
+            <label for="Alg" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм подписи</label>
             <div class="col-sm-2">
                 <select class="form-control form-control-sm" required id="Alg">
                     <option>12313123</option>
@@ -88,18 +87,21 @@
                 </select>
             </div>
         </div>
+        <!-- Дата начала       -->
         <div class="form-group row">
             <label for="startDate" class="col-sm-2 col-form-label col-form-label-sm">Дата начала</label>
             <div class="col-sm-2">
                 <input type="date" class="form-control form-control-sm" id="startDate" required>
             </div>
         </div>
+        <!-- Конечная дата       -->
         <div class="form-group row">
             <label for="endDate" class="col-sm-2 col-form-label col-form-label-sm">Конечная дата</label>
             <div class="col-sm-2">
                 <input type="date" class="form-control form-control-sm" id="endDate" required>
             </div>
         </div>
+        <!-- Участники церемонии:       -->
         <div class="form-group row">
             <label class="col-sm-2 col-form-label col-form-label-sm"><b>Участники церемонии:</b></label>
         </div>
@@ -107,10 +109,6 @@
         <script th:insert="static/js/addInputFieldsCreateKeys.js"></script>
         <style th:insert="static/css/addButtonCreateKeys.css"></style>
         <div>
-            <style>
-
-            </style>
-
             <div class="container">
                 <div class="form-group row">
                     <div class="col-sm-2">
@@ -175,8 +173,6 @@
             </div>
         </div>
         <script th:insert="static/js/checkValidCreateKeys.js"></script>
-
-
     </div>
 </form>
 <div th:insert="shared/footer:: footer"></div>
