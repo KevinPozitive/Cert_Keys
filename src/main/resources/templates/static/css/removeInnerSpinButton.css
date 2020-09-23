@@ -1,0 +1,3 @@
+.form-control-sm::-webkit-inner-spin-button {
+    display: none;
+}

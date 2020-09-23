@@ -1,0 +1,8 @@
+role:
+  values: CVCA, DV
+
+type:
+  values: IS
+
+signatureAlgorithm:
+  values: SHA
