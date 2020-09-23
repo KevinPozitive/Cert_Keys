@@ -22,7 +22,7 @@
         <div class="form-group row">
             <label for="nameUC" class="col-sm-2 col-form-label col-form-label-sm">Имя УЦ</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control form-control-sm" required id="nameUC" maxlength="9" minlength="4" placeholder="col-form-label-sm">
+                <input type="text" class="form-control form-control-sm" required id="nameUC" maxlength="9" minlength="4">
             </div>
         </div>
         <!-- Номер      -->
@@ -30,7 +30,7 @@
             <style th:insert="static/css/removeInnerSpinButton.css"></style>
             <label for="numb" class="col-sm-2 col-form-label col-form-label-sm">Номер</label>
             <div class="col-sm-2">
-                <input type="number"  class="form-control form-control-sm" id="numb" placeholder="col-form-label-sm" required>
+                <input type="number"  class="form-control form-control-sm" id="numb" required>
                 <script th:insert="static/js/maxInputNumbersCrKeys.js"></script>
             </div>
         </div>
@@ -52,11 +52,9 @@
             <label for="role" class="col-sm-2 col-form-label col-form-label-sm">Роль</label>
             <div class="col-sm-2">
                 <select class="form-control form-control-sm" required id="role">
-                    <option>12313123</option>
-                    <option>22323233</option>
-                    <option>3231213123</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <div th:each="el : ${role}">
+                        <option th:text="${role.get(elStat.index)}"></option>
+                    </div>
                 </select>
             </div>
         </div>
@@ -65,11 +63,9 @@
             <label for="type" class="col-sm-2 col-form-label col-form-label-sm">Тип</label>
             <div class="col-sm-2">
                 <select class="form-control form-control-sm" required id="type">
-                    <option property=""> qwe</option>
-                    <option>22323233</option>
-                    <option>3231213123</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <div th:each="el : ${type}">
+                    <option th:text="${type.get(elStat.index)}"></option>
+                    </div>
                 </select>
             </div>
         </div>
@@ -78,11 +74,9 @@
             <label for="Alg" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм подписи</label>
             <div class="col-sm-2">
                 <select class="form-control form-control-sm" required id="Alg">
-                    <option>12313123</option>
-                    <option>22323233</option>
-                    <option>3231213123</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <div th:each="el : ${signatureAlgorithm}">
+                        <option th:text="${signatureAlgorithm.get(elStat.index)}"></option>
+                    </div>
 
                 </select>
             </div>

@@ -5,11 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+import java.util.Map;
+
 @Controller
 public class MainController {
 
-    @Value("${signatureAlg}")
-    private String message;
+    @Value("${role.values}")
+    private List<String> role;
+    @Value("${type.values}")
+    private List<String> type;
+    @Value("${signatureAlgorithm.values}")
+    private List<String> signatureAlgorithm;
+
 
     @GetMapping("/")
     public String greeting(Model model) {
@@ -21,14 +29,19 @@ public class MainController {
         return "hsm";
     }
     @GetMapping("/info")
-    public String info(Model model)
+    public String info()
     {
-        model.addAttribute("title", message);
         return "info";
     }
+
     @GetMapping("/createKeys")
-    public String createKeys(){
+    public String createKeys(Model model)
+    {
+        model.addAttribute("role",role);
+        model.addAttribute("type",type);
+        model.addAttribute("signatureAlgorithm", signatureAlgorithm);
         return "createKeys";
     }
+
 
 }
