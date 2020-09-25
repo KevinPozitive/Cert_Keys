@@ -1,3 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost/dbCert
+    username: postgres
+    password: 1234
+  jpa:
+    generate-ddl: true
+
 role:
   values: CVCA, DV
 
@@ -6,3 +14,5 @@ type:
 
 signatureAlgorithm:
   values: SHA
+
+

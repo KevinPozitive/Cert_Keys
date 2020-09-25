@@ -71,9 +71,9 @@
         </div>
         <!-- Алгоритм подписи       -->
         <div class="form-group row">
-            <label for="Alg" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм подписи</label>
+            <label for="signatureAlgorithm" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм подписи</label>
             <div class="col-sm-2">
-                <select class="form-control form-control-sm" required id="Alg">
+                <select class="form-control form-control-sm" required id="signatureAlgorithm">
                     <div th:each="el : ${signatureAlgorithm}">
                         <option th:text="${signatureAlgorithm.get(elStat.index)}"></option>
                     </div>
