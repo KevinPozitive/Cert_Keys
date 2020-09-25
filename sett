@@ -1,0 +1,59 @@
+Создаем корневой УЦ и корневой сертификат CVCA 
+
+0. Выбираем какой создаем - корневой или связующий
+
+КОРНЕВОЙ
+
+1. создаем пару ключей
+закрытый ключ
+
+openssl ecparam -out BYCVCANCES00001.priv.pem -name brainpoolP256r1 -genkey -param_enc explicit
+
+открытый ключ 
+
+openssl ec -in BYCVCANCES00001.pem -pubout -out BYCVCANCES00001.pub.pem
+
+
+переменные: имя удостоверяющего центра пример BYCVCANCES00002 
+                                               первые 2 символа - код страны
+                                               дальше не более 9 символов - мнемоника -название УЦ
+                                               последние 5 символов - последовательнность
+                                               
+                                               алгоритм подписи - пример brainpoolP256r1
+                                               получить доступные алгоритмы по команде - openssl ecparam -list_curves
+
+2. записываем ключи в HSM
+закрытый ключ
+pkcs11-tool --module /opt/safenet/protecttoolkit5/ptk/lib/libcryptoki.so  --login --login-type 'user' --pin '20Gfcgjhn20' --token-label 'TCC' --write-object BYCVCANCES00001.priv.pem  --label 'BYCVCANCES00001.priv' --private --extractable -y privkey
+открытый ключ
+pkcs11-tool --module /opt/safenet/protecttoolkit5/ptk/lib/libcryptoki.so  --login --login-type 'user' --pin '20Gfcgjhn20' --token-label 'TCC' --write-object BYCVCANCES00001.pub.pem  --label 'BYCVCANCES00001.pub' --extractable -y pubkey
+
+
+настройки HSM (реализовать):
+путь к библиотеке HSM - за параметром -module 
+имя пользователя - - за параметром --logintype
+пароль- за параметром --pin
+имя слота - за параметром -token-label
+файлы ключей - за параметром --write-object
+имя ключа в HSM - за параметром --label
+
+3. Конвертируем файл закрытого ключа в HSM
+openssl pkcs8 -topk8 -nocrypt -in BYCVCANCES00001.pem -outform DER -out BYCVCANCES00001.pkcs8 
+
+переменные - имена файла взятые выше
+
+4. генерируем сертификат CVCA
+
+cvc-create --out-cert=BYCVCANCES00001.cvcert --role=cvca --type=is --chr=BYCVCANCES00001 --issued=200629 --expires=250629 --sign-with=BYCVCANCES00001.pkcs8 --scheme=ECDSA_SHA_256 --read-finger --read-iris
+выбор переменных для cvc-create                     
+
+--scheme - (possible values="ECDSA_SHA_1", "ECDSA_SHA_224", "ECDSA_SHA_256", "ECDSA_SHA_384", "ECDSA_SHA_512", "RSA_v1_5_SHA_1", "RSA_v1_5_SHA_256", "RSA_v1_5_SHA_512", "RSA_PSS_SHA_1", "RSA_PSS_SHA_256", "RSA_PSS_SHA_512")
+-- out-cert берем из имени УЦ + .cvcert
+--role (сделать выпадающее меню ) но пока одно значение - cvca
+--type (сделать выпадающее меню ) но пока одно значение - is
+--chr - имя удостоверяющего центра
+--issued дата начала действия (по умолчанию текущая но должна быть влозможность изменить) формат YYMMDD
+--issued дата окончания действия (по умолчанию текущая + 3 месяца но должна быть влозможность изменить) формат YYMMDD
+--sign-with файл pkcs8 на шаге 3
+
+--read-finger и --read-iris всегда присутствуют в команде
