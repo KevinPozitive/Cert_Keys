@@ -9,166 +9,169 @@
 </head>
 <body>
 <div th:insert="shared/header:: header"></div>
-<form class="needValid">
-    <div class="container">
-        <!-- Страна       -->
-        <div class="form-group row">
-            <label for="country" class="col-sm-2 col-form-label col-form-label-sm">Страна</label>
-            <div class="col-sm-2">
-                <input type="text" class="form-control form-control-sm" required id="country" value="by" maxlength="2" minlength="2" >
-            </div>
-        </div>
-        <!-- Имя УЦ       -->
-        <div class="form-group row">
-            <label for="nameUC" class="col-sm-2 col-form-label col-form-label-sm">Имя УЦ</label>
-            <div class="col-sm-2">
-                <input type="text" class="form-control form-control-sm" required id="nameUC" maxlength="9" minlength="4">
-            </div>
-        </div>
-        <!-- Номер      -->
-        <div class="form-group row">
-            <style th:insert="static/css/removeInnerSpinButton.css"></style>
-            <label for="numb" class="col-sm-2 col-form-label col-form-label-sm">Номер</label>
-            <div class="col-sm-2">
-                <input type="number"  class="form-control form-control-sm" id="numb" required>
-                <script th:insert="static/js/maxInputNumbersCrKeys.js"></script>
-            </div>
-        </div>
-        <!-- Алгоритм шифрования       -->
-        <div class="form-group row">
-            <label for="algEncrypt" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм шифрования</label>
-            <div class="col-sm-2">
-                <select class="form-control form-control-sm" required id="algEncrypt">
-                    <option>12313123</option>
-                    <option>22323233</option>
-                    <option>3231213123</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </div>
-        <!-- Роль      -->
-        <div class="form-group row">
-            <label for="role" class="col-sm-2 col-form-label col-form-label-sm">Роль</label>
-            <div class="col-sm-2">
-                <select class="form-control form-control-sm" required id="role">
-                    <div th:each="el : ${role}">
-                        <option th:text="${role.get(elStat.index)}"></option>
-                    </div>
-                </select>
-            </div>
-        </div>
-        <!-- Тип       -->
-        <div class="form-group row">
-            <label for="type" class="col-sm-2 col-form-label col-form-label-sm">Тип</label>
-            <div class="col-sm-2">
-                <select class="form-control form-control-sm" required id="type">
-                    <div th:each="el : ${type}">
-                    <option th:text="${type.get(elStat.index)}"></option>
-                    </div>
-                </select>
-            </div>
-        </div>
-        <!-- Алгоритм подписи       -->
-        <div class="form-group row">
-            <label for="signatureAlgorithm" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм подписи</label>
-            <div class="col-sm-2">
-                <select class="form-control form-control-sm" required id="signatureAlgorithm">
-                    <div th:each="el : ${signatureAlgorithm}">
-                        <option th:text="${signatureAlgorithm.get(elStat.index)}"></option>
-                    </div>
 
-                </select>
-            </div>
-        </div>
-        <!-- Дата начала       -->
-        <div class="form-group row">
-            <label for="startDate" class="col-sm-2 col-form-label col-form-label-sm">Дата начала</label>
-            <div class="col-sm-2">
-                <input type="date" class="form-control form-control-sm" id="startDate" required>
-            </div>
-        </div>
-        <!-- Конечная дата       -->
-        <div class="form-group row">
-            <label for="endDate" class="col-sm-2 col-form-label col-form-label-sm">Конечная дата</label>
-            <div class="col-sm-2">
-                <input type="date" class="form-control form-control-sm" id="endDate" required>
-            </div>
-        </div>
-        <!-- Участники церемонии:       -->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label col-form-label-sm"><b>Участники церемонии:</b></label>
-        </div>
-        <hr style="width:100%;text-align-all:left;">
-        <script th:insert="static/js/addInputFieldsCreateKeys.js"></script>
-        <style th:insert="static/css/addButtonCreateKeys.css"></style>
-        <div>
-            <div class="container">
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <label for="firstName" class="col-sm-2 col-form-label col-form-label-sm">Имя</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id = "firstName" >
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <label for="secondName" class="col-sm-2 col-form-label col-form-label-sm">Фамилия</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id = "secondName" >
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <label for="lastName" class="col-sm-2 col-form-label col-form-label-sm">Отчество</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id = "lastName" >
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <label for="organ" class="col-sm-2 col-form-label col-form-label-sm">Орган</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id = "organ" >
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <label for="position" class="col-sm-2 col-form-label col-form-label-sm">Должность</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id = "position" >
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <label for="reason" class="col-sm-2 col-form-label col-form-label-sm">Основание</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id = "reason" >
-                    </div>
-                </div>
-                <hr style="width:100%;text-align-all:left;">
-            </div>
-            <div id="input0"></div>
+    <form class="needValid" action="/createKeys" method="post">
+        <div class="container">
+            <!-- Страна       -->
             <div class="form-group row">
+                <label for="country" class="col-sm-2 col-form-label col-form-label-sm">Страна</label>
                 <div class="col-sm-2">
-                    <div class="add" onclick="addInput()">+</div>
+                    <input type="text" class="form-control form-control-sm" name="country" required id="country" value="by" maxlength="2" minlength="2" >
                 </div>
             </div>
-            <div class="form-group row mb-5 " >
-                <div class="col" style="text-align: right">
-                    <button class="btn btn-primary" type="submit">Сохранить</button>
+            <!-- Имя УЦ       -->
+            <div class="form-group row">
+                <label for="nameUC" class="col-sm-2 col-form-label col-form-label-sm">Имя УЦ</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control form-control-sm" required id="nameUC" name="nameUC" maxlength="9" minlength="4">
                 </div>
             </div>
+            <!-- Номер      -->
+            <div class="form-group row">
+                <style th:insert="static/css/removeInnerSpinButton.css"></style>
+                <label for="numb" class="col-sm-2 col-form-label col-form-label-sm">Номер</label>
+                <div class="col-sm-2">
+                    <input type="number" name="numb" class="form-control form-control-sm" id="numb" required>
+                    <script th:insert="static/js/maxInputNumbersCrKeys.js"></script>
+                </div>
+            </div>
+            <!-- Алгоритм шифрования       -->
+            <div class="form-group row">
+                <label for="algEncrypt" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм шифрования</label>
+                <div class="col-sm-2">
+                    <select class="form-control  form-control-sm" name="algEncrypt" required id="algEncrypt">
+                        <option>12313123</option>
+                        <option>22323233</option>
+                        <option>3231213123</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Роль      -->
+            <div class="form-group row">
+                <label for="role" class="col-sm-2 col-form-label col-form-label-sm">Роль</label>
+                <div class="col-sm-2">
+                    <select class="form-control form-control-sm" name="role" required id="role">
+                        <div th:each="el : ${role}">
+                            <option th:text="${role.get(elStat.index)}"></option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <!-- Тип       -->
+            <div class="form-group row">
+                <label for="type" class="col-sm-2 col-form-label col-form-label-sm">Тип</label>
+                <div class="col-sm-2">
+                    <select class="form-control form-control-sm" name="type"  required id="type">
+                        <div th:each="el : ${type}">
+                            <option th:text="${type.get(elStat.index)}"></option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <!-- Алгоритм подписи       -->
+            <div class="form-group row">
+                <label for="signatureAlgorithm" class="col-sm-2 col-form-label col-form-label-sm">Алгоритм подписи</label>
+                <div class="col-sm-2">
+                    <select class="form-control form-control-sm" name="signatureAlgorithm" required id="signatureAlgorithm">
+                        <div th:each="el : ${signatureAlgorithm}">
+                            <option th:text="${signatureAlgorithm.get(elStat.index)}"></option>
+                        </div>
+
+                    </select>
+                </div>
+            </div>
+            <!-- Дата начала       -->
+            <div class="form-group row">
+                <label for="startDate" class="col-sm-2 col-form-label col-form-label-sm">Дата начала</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control form-control-sm" name="startDate" id="startDate" required>
+                </div>
+            </div>
+            <!-- Конечная дата       -->
+            <div class="form-group row">
+                <label for="endDate" class="col-sm-2 col-form-label col-form-label-sm">Конечная дата</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control form-control-sm" name="endDate" id="endDate" required>
+                </div>
+            </div>
+
+            <!-- Участники церемонии:       -->
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label col-form-label-sm"><b>Участники церемонии:</b></label>
+            </div>
+            <hr style="width:100%;text-align-all:left;">
+            <script th:insert="static/js/addInputFieldsCreateKeys.js"></script>
+            <style th:insert="static/css/addButtonCreateKeys.css"></style>
+            <div>
+                <div class="container">
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label for="firstName" class="col-sm-2 col-form-label col-form-label-sm">Имя</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-sm" name="firstName" id = "firstName" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label for="secondName" class="col-sm-2 col-form-label col-form-label-sm">Фамилия</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-sm" name="secondName" id = "secondName" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label for="lastName" class="col-sm-2 col-form-label col-form-label-sm">Отчество</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-sm" name="lastName" id = "lastName" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label for="organ" class="col-sm-2 col-form-label col-form-label-sm">Орган</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-sm" name="organ"  id = "organ" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label for="position" class="col-sm-2 col-form-label col-form-label-sm">Должность</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-sm" name="position" id = "position" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label for="reason" class="col-sm-2 col-form-label col-form-label-sm">Основание</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-sm" name="reason" id = "reason" >
+                        </div>
+                    </div>
+                    <hr style="width:100%;text-align-all:left;">
+                </div>
+                <div id="input0"></div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <div class="add" onclick="addInput()">+</div>
+                    </div>
+                </div>
+<!--          Button-->
+                <div class="form-group row mb-5 " >
+                    <div class="col" style="text-align: right">
+                        <button class="btn btn-primary" type="submit">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+            <script th:insert="static/js/checkValidCreateKeys.js"></script>
         </div>
-        <script th:insert="static/js/checkValidCreateKeys.js"></script>
-    </div>
-</form>
+    </form>
 <div th:insert="shared/footer:: footer"></div>
 </body>
 </html>

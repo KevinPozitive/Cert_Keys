@@ -1,17 +1,23 @@
 package by.nces.sert_Keys.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-public class CertSetModel {
+public class CertSetModel  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @DateTimeFormat(pattern = "YYYY-MM-DD")
+    private Date startDate;
+    @DateTimeFormat(pattern = "YYYY-MM-DD")
+    private Date endDate;
 
     private String country;
     private String nameUC;
@@ -20,11 +26,13 @@ public class CertSetModel {
     private String role;
     private String typeC;
     private String signatureAlgorithm;
-    private Date startDate;
-    private Date endDate;
 
-    public CertSetModel() {
-    }
+
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Cert_Id")
+    private List<MembersModel> membersModels;
 
 
     public void setId(Long id) {
@@ -106,4 +114,32 @@ public class CertSetModel {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+    public List<MembersModel> getMembersModels() {
+        return membersModels;
+    }
+
+    public void setMembersModels(List<MembersModel> membersModels) {
+        this.membersModels = membersModels;
+    }
+
+    public CertSetModel() {
+    }
+
+
+    public CertSetModel(String country, String nameUC, int numb, String algEncrypt, String role, String typeC, String signatureAlgorithm, String startDate, String endDate) throws ParseException {
+        setCountry(country);
+
+        this.nameUC = nameUC;
+        this.numb = numb;
+        this.algEncrypt = algEncrypt;
+        this.role = role;
+        this.typeC = typeC;
+        this.signatureAlgorithm = signatureAlgorithm;
+
+        this.startDate = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+        this.endDate = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+    }
+
+
 }

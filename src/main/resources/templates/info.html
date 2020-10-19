@@ -8,10 +8,30 @@
 </head>
 <body>
 <div th:insert="shared/header:: header"></div>
-<div th:each="el : ${title}">
-
-    <div><p th:text="${title.get(elStat.index)}"/></div>
-
+<div th:each="el : ${CertSets}">
+    <div>Сертификат</div>
+    <div th:text="${el.getNameUC()}"/>
+    <p th:text = "${el.getCountry()}"/>
+    <p th:text = "${el.getRole()}"/>
+    <p th:text = "${#dates.format(el.getStartDate(),'yyyy-MM-dd')}"/>
+    <p th:text = "${#dates.format(el.getEndDate(),'yyyy-MM-dd')}"/>
+    <p th:text = "${el.getId()}"/>
+    <div th:each="el1: ${el.getMembersModels()}">
+        <div>Участники:</div>
+        <div th:text="${el1.getFirstName()}"/>
+        <p th:text = "${el1.getSecondName()}"/>
+        <p th:text = "${el1.getLastName()}"/>
+        <p th:text = "${el1.getAgency()}"/>
+        <p th:text = "${el1.getPosition()}"/>
+        <p th:text = "${el1.getReason()}"/>
+        <p th:text = "${el1.getId()}"/>
+        <p th:text = "${el1.getCert_Id()}"/>
+    </div>
+</div>
+<!--<div th:each="els : ${Members}">-->
+<!--    <div th:text="${els.getFirstName()}"/>-->
+<!--    <p th:text = "${els.getSecondName()}"/>-->
+<!--</div>-->
 </div>
 <div th:insert="shared/footer:: footer"></div>
 </body>

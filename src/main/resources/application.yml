@@ -15,4 +15,8 @@ type:
 signatureAlgorithm:
   values: SHA
 
+connectConfigs:
+  PORT: 8080
+  IP: localhost
+
 

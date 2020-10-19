@@ -1,9 +1,7 @@
 package by.nces.sert_Keys.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class MembersModel {
@@ -11,12 +9,24 @@ public class MembersModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
+
     private String firstName;
     private String secondName;
     private String lastName;
     private String agency;
     private String position;
     private String reason;
+
+    private Long Cert_Id;
+
+    public Long getCert_Id() {
+        return Cert_Id;
+    }
+
+    public void setCert_Id(Long cert_Id) {
+        Cert_Id = cert_Id;
+    }
 
     public Long getId() {
         return id;
@@ -73,4 +83,20 @@ public class MembersModel {
     public void setReason(String reason) {
         this.reason = reason;
     }
+
+    public MembersModel() {
+
+    }
+
+    public MembersModel(String firstName, String secondName, String lastName, String agency, String position, String reason, Long cert_Id) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.lastName = lastName;
+        this.agency = agency;
+        this.position = position;
+        this.reason = reason;
+        this.Cert_Id = cert_Id;
+    }
+
+
 }
