@@ -142,4 +142,9 @@ public class CertSetModel  {
     }
 
 
+
+    public String getData(){
+        return "~"+startDate+"~"+endDate+"~"+country+"~"+nameUC+"~"+numb+"~"+algEncrypt+"~"+role+"~"+typeC+"~"+signatureAlgorithm;
+    }
+
 }

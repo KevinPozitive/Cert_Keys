@@ -97,6 +97,4 @@ public class MembersModel {
         this.reason = reason;
         this.Cert_Id = cert_Id;
     }
-
-
 }

@@ -16,7 +16,7 @@ signatureAlgorithm:
   values: SHA
 
 connectConfigs:
-  PORT: 8080
-  IP: localhost
+  PORT: 8081
+  IP: "localhost"
 
 
