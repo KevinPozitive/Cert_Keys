@@ -13,7 +13,7 @@ type:
   values: IS
 
 signatureAlgorithm:
-  values: SHA
+  values: ECDSA_SHA_256
 
 connectConfigs:
   PORT: 8081
