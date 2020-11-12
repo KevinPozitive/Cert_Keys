@@ -12,8 +12,8 @@ public class CheckData {
     public void request(String model, String type) throws IOException {
         String[] part = model.split("~");
         switch (type){
-            case "Корневой": createSert.createRootCert(part);break;
-            case "Связующий":  createSert.createBinderCert(part);break;
+            case "1": createSert.createRootCert(part);break;
+            case "2":  createSert.createBinderCert(part);break;
         }
     }
 

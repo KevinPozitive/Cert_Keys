@@ -3,6 +3,7 @@ package by.nces.sert_Keys.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +27,7 @@ public class CertSetModel  {
     private String role;
     private String typeC;
     private String signatureAlgorithm;
+    private DateFormat dateFormat;
 
 
 
@@ -139,12 +141,14 @@ public class CertSetModel  {
 
         this.startDate = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
         this.endDate = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+        this.dateFormat = new SimpleDateFormat("yyMMdd");
+        System.out.println(this.dateFormat.format(this.startDate));
     }
 
 
 
     public String getData(){
-        return "~"+startDate+"~"+endDate+"~"+country+"~"+nameUC+"~"+numb+"~"+algEncrypt+"~"+role+"~"+typeC+"~"+signatureAlgorithm;
+        return country+"~"+ nameUC+"~"+ numb+"~"+ algEncrypt+"~"+ role+"~"+ typeC +"~"+ signatureAlgorithm+"~"+ dateFormat.format(startDate) +"~"+ dateFormat.format(endDate);
     }
 
 }

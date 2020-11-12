@@ -7,8 +7,6 @@ import by.nces.sert_Keys.models.CertSetModel;
 import by.nces.sert_Keys.models.MembersModel;
 import by.nces.sert_Keys.repo.CertSetRepo;
 import by.nces.sert_Keys.repo.MembersRepo;
-import by.nces.sert_Keys.serverPart.connect.ClientConnect;
-import by.nces.sert_Keys.serverPart.connect.Control;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,19 +22,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class CreateKeysController extends Control {
+public class CreateKeysController{
     @Value("${role.values}")
     private List<String> role;
     @Value("${type.values}")
     private List<String> type;
     @Value("${signatureAlgorithm.values}")
     private List<String> signatureAlgorithm;
-    private  ClientConnect clientConnect;
     private CheckData checkData;
 
-    public CreateKeysController(ClientConnect clientConnect) {
-        checkData = new CheckData();
-        this.clientConnect = clientConnect;
+    public CreateKeysController() {
+     this.checkData = new CheckData();
     }
 
 
@@ -71,8 +67,6 @@ public class CreateKeysController extends Control {
                              @RequestParam String position, @RequestParam String reason) throws ParseException, IOException {
         CertSetModel certSet = new CertSetModel(country, nameUC, numb, algEncrypt, role, type, signatureAlgorithm, startDate, endDate);
         checkData.request(certSet.getData(), typeCert);
-        clientConnect.setConnect();
-        Control.serverInteraction.sendMessage(certSet.getData(), typeCert);
         List<MembersModel> membersModels = new ArrayList<>();
         for(int i = 0; i<stringSplit(firstName).length;i++){
             System.out.println(stringSplit(firstName)[i] + i);

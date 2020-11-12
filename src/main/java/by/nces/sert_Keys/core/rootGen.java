@@ -16,7 +16,7 @@ public class rootGen {
     }
 
     private String funParam(){
-        this.param = str[0] + str[5] + str[1] + str[2];
+        this.param = str[0] + str[4] + str[1] + str[2];
         return this.param;
     }
 
@@ -56,6 +56,7 @@ public class rootGen {
             this.p = Runtime.getRuntime().exec(fileConv);
         } catch (Exception e) {
             e.printStackTrace();
+
         }
     }
 

@@ -1,6 +1,6 @@
 package by.nces.sert_Keys;
 
-import by.nces.sert_Keys.serverPart.connect.ClientConnect;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
